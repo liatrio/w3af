@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    TAG = "REPOSITORY/IMAGE:TAG"
+    TAG = "liatrio/w3af:latest"
   }
 
   stages {
