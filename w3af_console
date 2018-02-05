@@ -54,6 +54,9 @@ Options:
     -y or --yes
         Automatically agree to disclaimer prompt
 
+    -e or --exit
+        Automatically exit after running initial command
+
 For more info visit http://w3af.org/
 """
 
@@ -126,6 +129,7 @@ def main():
     force_profile = None
     profile = None
     do_update = None
+    exit_after = False
     skip_disclaimer = False
     
     for o, a in opts:
@@ -155,6 +159,8 @@ def main():
             do_update = False
         if o in ('-y', '--yes'):
             skip_disclaimer = True
+        if o in ('-e', '--exit'):
+            exit_after = True
     
     commands_to_run = _generate_run_commands(script_file, profile, force_profile)
     console = ConsoleUI(commands=commands_to_run, do_upd=do_update)
@@ -162,7 +168,7 @@ def main():
     if not skip_disclaimer and not console.accept_disclaimer():
         return -4
 
-    return console.sh()
+    return console.sh(active=not exit_after)
 
 
 def _main():

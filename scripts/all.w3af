@@ -11,7 +11,7 @@ output config console
 set verbose False
 back
 
-crawl all, !bing_spider, !google_spider, !spider_man
+crawl !google_spider
 crawl
 
 grep all
@@ -20,13 +20,10 @@ grep
 audit all
 audit
 
-bruteforce all
-bruteforce
-
 back
 
 target
-set target http://moth/w3af/
+set target http://APP_IP_ADDRESS:8080/credit-card/
 back
 
 start

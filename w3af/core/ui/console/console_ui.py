@@ -131,7 +131,7 @@ class ConsoleUI(object):
 
         return False
 
-    def sh(self, name='w3af', callback=None):
+    def sh(self, name='w3af', active=True, callback=None):
         """
         Main cycle
         """
@@ -148,7 +148,7 @@ class ConsoleUI(object):
 
             self._lastWasArrow = False
             self._showPrompt()
-            self._active = True
+            self._active = active
             term.setRawInputMode(True)
 
             self._executePending()
